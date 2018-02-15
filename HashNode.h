@@ -5,29 +5,34 @@
  */
 
 /* 
- * File:   HashNode.h
+ * File:   HashTable.h
  * Author: B
  *
- * Created on February 6, 2018, 10:54 PM
+ * Created on February 6, 2018, 11:03 PM
  */
 #include <iostream>
+#include "Event.h"
 using namespace std;
 
-#ifndef HASHNODE_H
-#define HASHNODE_H
+const int SIZE = 100;
 
-class HashNode{
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
 
+class HashTable{
+    
+private:
+    Event container[SIZE][SIZE];
+    
 public:
-    int key;
-    int value;
-    HashNode* next;
-    HashNode(int key, int value){
-        this->key = key;
-        this->value = value;
-        next = NULL;
-    } 
+    HashTable();
+    ~HashTable();
+    int EventKeyFunc(string title); //reinitializes key for the limited size of the list
+    void input(string title, int day, MONTH month, int year, int hour, int minutes, string descrip);
+    void removeEvent(string title);
+    Event searchEvent(string title);
 };
 
-#endif /* HASHNODE_H */
+#endif /* HASHTABLE_H */
+
 
